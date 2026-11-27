@@ -1,0 +1,86 @@
+-- Run AFTER the CREATE TABLE statement from the assignment.
+-- Dates are relative to the current Sunday so /meetings/current always works; re-running is safe.
+INSERT INTO meetings
+  (date, meeting_type, presiding, conducting, announcements, opening_hymn, opening_prayer,
+   ward_business, stake_business, sacrament_hymn, speakers, closing_hymn, closing_prayer)
+VALUES
+((CURRENT_DATE - EXTRACT(DOW FROM CURRENT_DATE)::int + 7), 'regular', 'Bishop David Larsen', 'Brother Mark Ellison',
+ ARRAY['Ward Christmas dinner signup is in the foyer.'],
+ '{"number":85,"title":"How Firm a Foundation"}'::jsonb, 'Sister Rachel Adams',
+ '[{"description":"Sustain Brother Luke Tanner as elders quorum counselor."}]'::jsonb, false,
+ '{"number":172,"title":"In Humility, Our Savior"}'::jsonb,
+ '[{"name":"Brother Jonathan Smith","topic":"Gratitude in all circumstances","type":"speaker"},{"name":"Primary children","topic":"Musical number","type":"musical-number"},{"name":"Sister Naomi Fields","topic":"Preparing for Christmas","type":"speaker"}]'::jsonb,
+ '{"number":219,"title":"Because I Have Been Given Much"}'::jsonb, 'Brother Victor Chen'),
+
+((CURRENT_DATE - EXTRACT(DOW FROM CURRENT_DATE)::int), 'regular', 'Bishop David Larsen', 'Brother Mark Ellison',
+ ARRAY['Please bring canned goods for the food drive.','Youth service project next Saturday at 9:00 AM.'],
+ '{"number":5,"title":"High on the Mountain Top"}'::jsonb, 'Brother Peter Hall',
+ '[]'::jsonb, false,
+ '{"number":172,"title":"In Humility, Our Savior"}'::jsonb,
+ '[{"name":"Sister Emily Carter","topic":"Faith in Jesus Christ","type":"speaker"},{"name":"Hannah and Lucy Brown","topic":"I Am a Child of God (duet)","type":"musical-number"},{"name":"Brother Samuel Okafor","topic":"The blessings of service","type":"speaker"}]'::jsonb,
+ '{"number":241,"title":"Count Your Blessings"}'::jsonb, 'Sister Grace Kim'),
+
+((CURRENT_DATE - EXTRACT(DOW FROM CURRENT_DATE)::int - 7), 'testimony', 'Bishop David Larsen', 'Brother Mark Ellison',
+ ARRAY['Ward temple night is Thursday at 7:00 PM.'],
+ '{"number":2,"title":"The Spirit of God"}'::jsonb, 'Sister Anna Reyes',
+ '[{"description":"Sustain Sister Ruth Whitaker as Primary secretary."}]'::jsonb, true,
+ '{"number":169,"title":"As Now We Take the Sacrament"}'::jsonb,
+ '[{"name":"Members of the ward","topic":"Bearing of testimonies","type":"speaker"}]'::jsonb,
+ '{"number":134,"title":"I Believe in Christ"}'::jsonb, 'Brother Tom Nakamura'),
+
+((CURRENT_DATE - EXTRACT(DOW FROM CURRENT_DATE)::int - 14), 'stake', 'President Alan Brooks', 'President Alan Brooks',
+ ARRAY[]::text[],
+ '{"number":19,"title":"We Thank Thee, O God, for a Prophet"}'::jsonb, 'Sister Carol Jensen',
+ '[]'::jsonb, true,
+ '{"number":169,"title":"As Now We Take the Sacrament"}'::jsonb,
+ '[{"name":"Sister Helen Ortiz","topic":"Strengthening families","type":"speaker"},{"name":"Stake choir","topic":"Come, Thou Fount of Every Blessing","type":"musical-number"},{"name":"President Alan Brooks","topic":"Gathering Israel","type":"speaker"}]'::jsonb,
+ '{"number":85,"title":"How Firm a Foundation"}'::jsonb, 'Elder James Whitfield'),
+
+((CURRENT_DATE - EXTRACT(DOW FROM CURRENT_DATE)::int - 21), 'regular', 'Bishop David Larsen', 'Brother Daniel Moore',
+ ARRAY['Ward choir practice Wednesday at 7:30 PM.'],
+ '{"number":2,"title":"The Spirit of God"}'::jsonb, 'Brother Isaac Young',
+ '[{"description":"Release Brother Kyle Dean as ward activities chair."},{"description":"Sustain Sister Maria Lopez as ward activities chair."}]'::jsonb, false,
+ '{"number":172,"title":"In Humility, Our Savior"}'::jsonb,
+ '[{"name":"Sister Anna Smith","topic":"The covenant path","type":"speaker"},{"name":"Brother Ethan Walsh","topic":"Daily scripture study","type":"speaker"}]'::jsonb,
+ '{"number":136,"title":"I Know That My Redeemer Lives"}'::jsonb, 'Sister Olivia Grant'),
+
+((CURRENT_DATE - EXTRACT(DOW FROM CURRENT_DATE)::int - 28), 'general', 'Bishop David Larsen', 'Bishop David Larsen',
+ ARRAY['General conference broadcast begins at 10:00 AM in the chapel.'],
+ '{"number":19,"title":"We Thank Thee, O God, for a Prophet"}'::jsonb, 'Brother Daniel Moore',
+ '[]'::jsonb, false,
+ '{"number":169,"title":"As Now We Take the Sacrament"}'::jsonb,
+ '[{"name":"General conference session","topic":"Broadcast from Salt Lake City","type":"speaker"}]'::jsonb,
+ '{"number":2,"title":"The Spirit of God"}'::jsonb, 'Sister Julia Park'),
+
+((CURRENT_DATE - EXTRACT(DOW FROM CURRENT_DATE)::int - 35), 'regular', 'Bishop David Larsen', 'Brother Mark Ellison',
+ ARRAY[]::text[],
+ '{"number":5,"title":"High on the Mountain Top"}'::jsonb, 'Sister Beth Morgan',
+ '[]'::jsonb, false,
+ '{"number":172,"title":"In Humility, Our Savior"}'::jsonb,
+ '[{"name":"Brother Noah Reed","topic":"Ministering","type":"speaker"},{"name":"Sister Priya Patel","topic":"Hope in Christ","type":"speaker"}]'::jsonb,
+ '{"number":241,"title":"Count Your Blessings"}'::jsonb, 'Brother Henry Cole'),
+
+((CURRENT_DATE - EXTRACT(DOW FROM CURRENT_DATE)::int - 42), 'testimony', 'Bishop David Larsen', 'Brother Mark Ellison',
+ ARRAY['Fast offerings help those in need.'],
+ '{"number":2,"title":"The Spirit of God"}'::jsonb, 'Brother Luke Tanner',
+ '[]'::jsonb, false,
+ '{"number":169,"title":"As Now We Take the Sacrament"}'::jsonb,
+ '[{"name":"Members of the ward","topic":"Bearing of testimonies","type":"speaker"}]'::jsonb,
+ '{"number":134,"title":"I Believe in Christ"}'::jsonb, 'Sister Carol Jensen'),
+
+('2026-05-03', 'regular', 'Bishop David Larsen', 'Brother Mark Ellison',
+ ARRAY[]::text[],
+ '{"number":5,"title":"High on the Mountain Top"}'::jsonb, 'Sister Beth Morgan',
+ '[]'::jsonb, false,
+ '{"number":172,"title":"In Humility, Our Savior"}'::jsonb,
+ '[{"name":"Brother Noah Reed","topic":"The covenant path","type":"speaker"}]'::jsonb,
+ '{"number":241,"title":"Count Your Blessings"}'::jsonb, 'Brother Henry Cole'),
+
+('2026-03-01', 'testimony', 'Bishop David Larsen', 'Brother Mark Ellison',
+ ARRAY[]::text[],
+ '{"number":2,"title":"The Spirit of God"}'::jsonb, 'Brother Peter Hall',
+ '[]'::jsonb, false,
+ '{"number":169,"title":"As Now We Take the Sacrament"}'::jsonb,
+ '[{"name":"Members of the ward","topic":"Bearing of testimonies","type":"speaker"}]'::jsonb,
+ '{"number":136,"title":"I Know That My Redeemer Lives"}'::jsonb, 'Sister Grace Kim')
+ON CONFLICT (date) DO NOTHING;
