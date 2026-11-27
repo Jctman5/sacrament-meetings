@@ -3,11 +3,13 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import MeetingDetail from '@/components/MeetingDetail';
 import PrintButton from '@/components/PrintButton';
-import { fetchMeeting } from '@/lib/api';
+import { getMeetingById } from '@/lib/meetings-db';
 
 async function MeetingContent({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const meeting = await fetchMeeting(id);
+  if (!/^\d+$/.test(id)) notFound();
+
+  const meeting = await getMeetingById(Number(id));
   if (!meeting) notFound();
 
   return (

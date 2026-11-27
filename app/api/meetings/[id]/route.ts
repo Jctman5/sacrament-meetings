@@ -11,7 +11,7 @@ export async function GET(
     return NextResponse.json({ error: 'id must be a valid number' }, { status: 400 });
   }
 
-  const meeting = getMeetingById(Number(id));
+  const meeting = await getMeetingById(Number(id));
   if (!meeting) {
     return NextResponse.json({ error: `No meeting found with id ${id}` }, { status: 404 });
   }
